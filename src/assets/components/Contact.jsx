@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import db from "../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,9 +13,16 @@ function Contact() {
     message: "",
   });
 
+  const formVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  };
   const formHandler = async (e) => {
     e.preventDefault();
-    // Use Firebase
     try {
       await addDoc(collection(db, "email"), formData);
       setFormData({
@@ -67,7 +75,15 @@ function Contact() {
       <h3 className="my-5 text-2xl md:texl-4xl text-red-500 font-semibold">
         Let us Talk
       </h3>
-      <form className="w-11/12 md:w-3/4 lg:w-1/2" onSubmit={formHandler}>
+      <motion.form
+        variants={formVariants}
+        initial="hidden"
+        transition={{ duration: 2 }}
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="w-11/12 md:w-3/4 lg:w-1/2"
+        onSubmit={formHandler}
+      >
         <ToastContainer />
         <div className="w-full my-2">
           <input
@@ -115,7 +131,7 @@ function Contact() {
             className="text-white placeholder:text-neutral-600 placeholder:font-bold shadow-neutral-200 shadow px-5 py-3 border-white border-2 hover:border-red-500 bg-red-500 cursor-pointer hover:bg-white hover:text-red-500 transition-all duration-400 ease-in rounded-md"
           />
         </div>
-      </form>
+      </motion.form>
     </div>
   );
 }

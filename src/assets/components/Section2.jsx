@@ -1,6 +1,11 @@
+import { motion } from "framer-motion";
 import { skills } from "./compJS/skills";
 function Section2() {
   const { codingSkills, designingSkills } = skills();
+  const listVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
     <div className="py-6 md:py-18">
       <div className="text-center">
@@ -16,7 +21,15 @@ function Section2() {
             </span>
           </div>
           {codingSkills.map((skill, index) => (
-            <div key={index} className="py-2">
+            <motion.div
+              variants={listVariants}
+              initial="hidden"
+              transition={{ type: "spring", duration: 0.9, stiffness: 100 }}
+              whileInView="visible"
+              viewport={{ once: true }}
+              key={index}
+              className="py-2"
+            >
               <span className="block font-semibold py-1 text-start">
                 {skill.skill}
               </span>
@@ -28,7 +41,7 @@ function Section2() {
                   {skill.level}%
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         <div className="md:w-1/2 text-center py-2 md:py-4">
@@ -38,7 +51,15 @@ function Section2() {
             </span>
           </div>
           {designingSkills.map((skill, index) => (
-            <div key={index} className="py-2">
+            <motion.div
+              variants={listVariants}
+              initial="hidden"
+              transition={{ type: "spring", duration: 0.9, stiffness: 100 }}
+              whileInView="visible"
+              viewport={{ once: true }}
+              key={index}
+              className="py-2"
+            >
               <span className="block font-semibold py-1 text-start">
                 {skill.skill}
               </span>
@@ -50,7 +71,7 @@ function Section2() {
                   {skill.level}%
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

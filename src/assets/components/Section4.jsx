@@ -1,8 +1,13 @@
+import { motion } from "framer-motion";
 import { MdDesignServices } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineCode } from "react-icons/md";
 import { MdMonitor } from "react-icons/md";
 function Section4() {
+  const serviceVariant = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1 },
+  };
   return (
     <div className="md:py-10 py-6 my-10">
       <div className="block text-center py-5 md:py-10">
@@ -19,7 +24,14 @@ function Section4() {
       </div>
       <div className="py-2">
         <div className="flex justify-center flex-wrap lg:flex-nowrap gap-2">
-          <div className="flex flex-col justify-center items-center">
+          <motion.div
+            variants={serviceVariant}
+            initial="hidden"
+            transition={{ type: "tween", delay: 0.2, duration: 0.9 }}
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col justify-center items-center"
+          >
             <span className="bg-neutral-100 p-4 md:p-8 rounded-full -z-50 block w-fit">
               <CiSearch size={40} />
             </span>
@@ -29,8 +41,15 @@ function Section4() {
               orchestrating traffic surges and boosting search engine rankings
               for audience enchantment.
             </p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
+          </motion.div>
+          <motion.div
+            variants={serviceVariant}
+            initial="hidden"
+            transition={{ type: "tween", delay: 0.2, duration: 0.9 }}
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col justify-center items-center"
+          >
             <span className="bg-neutral-100 p-4 md:p-8 rounded-full -z-50 block w-fit">
               <MdOutlineCode size={40} />
             </span>
@@ -42,8 +61,15 @@ function Section4() {
               back-end technologies to craft robust, scalable web solutions for
               diverse client needs.
             </p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
+          </motion.div>
+          <motion.div
+            variants={serviceVariant}
+            initial="hidden"
+            transition={{ type: "tween", delay: 0.2, duration: 0.9 }}
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col justify-center items-center"
+          >
             <span className="bg-neutral-100 p-4 md:p-8 rounded-full -z-50 block w-fit">
               <MdDesignServices size={40} />
             </span>
@@ -55,8 +81,15 @@ function Section4() {
               exceptional user experiences, aligning seamlessly with clients'
               brand visions.
             </p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
+          </motion.div>
+          <motion.div
+            variants={serviceVariant}
+            initial="hidden"
+            transition={{ type: "tween", delay: 0.2, duration: 0.9 }}
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col justify-center items-center"
+          >
             <span className="bg-neutral-100 p-4 md:p-8 rounded-full -z-50 block w-fit">
               <MdMonitor size={40} />
             </span>
@@ -67,7 +100,7 @@ function Section4() {
               As a web designer, I fuse creativity and technical expertise to
               craft captivating, responsive websites.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

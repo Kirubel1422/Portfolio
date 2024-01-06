@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { FaGithub, FaTelegram } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -87,12 +88,16 @@ function Nav() {
       window.removeEventListener("scroll", () => {});
     };
   }, [window.scrollY, hash]);
+
   return (
     <header className=" fixed z-50 w-full">
-      <div
+      <motion.div
         className={`flex justify-between items-center z-50 px-4 lg:px-24 py-6 ${
           scrolling ? "bg-opacity-100" : "bg-opacity-65"
         }  bg-neutral-600 text-neutral-300`}
+        transition={{ type: "tween", duration: 0.8 }}
+        initial={{ y: -250 }}
+        animate={{ y: 0 }}
       >
         <div>
           <Link
@@ -180,18 +185,27 @@ function Nav() {
             />
           )}
         </div>
-      </div>
+      </motion.div>
       {toggle && (
-        <div className="relative z-50">
+        <motion.div
+          initial={{ opacity: 0 }}
+          transition={{ type: "spring", delay: 0.2, duration: 0.5 }}
+          animate={{ opacity: 1 }}
+          className="relative z-50"
+        >
           <div className="absolute w-full bg-neutral-600 !bg-opacity-70 my-8 -top-8 text-lg">
-            <ul>
+            <motion.ul
+              initial={{ y: -100 }}
+              transition={{ type: "spring", delay: 0.2, duration: 0.9 }}
+              animate={{ y: 0 }}
+            >
               <li className="py-4 px-6 ">
                 <Link
                   to="/"
                   onClick={() => handleScroll("home")}
                   className={` text-neutral-100 ${
                     activeLinks.home ? "text-white border-b" : ""
-                  }  focus:text-white focus:border-b  hover:underline ease hover:text-neutral-50  transition-all duration-300 ease ${
+                  }  focus:text-white focus:border-b  ease hover:text-neutral-50  transition-all duration-300 ease ${
                     defaultLink ? "text-white border-b" : ""
                   }`}
                 >
@@ -204,7 +218,7 @@ function Nav() {
                   to="#about"
                   className={`text-neutral-100 ${
                     activeLinks.about ? "text-white border-b" : ""
-                  } focus:text-white focus:border-b  hover:text-neutral-50 hover:underline transition-all duration-300 ease`}
+                  } focus:text-white focus:border-b  hover:text-neutral-50  transition-all duration-300 ease`}
                 >
                   About
                 </Link>
@@ -215,7 +229,7 @@ function Nav() {
                   onClick={() => handleScroll("service")}
                   className={`text-neutral-100  focus:text-white ${
                     activeLinks.service ? "text-white border-b" : ""
-                  } focus:border-b  hover:text-neutral-50 hover:underline transition-all duration-300 ease`}
+                  } focus:border-b  hover:text-neutral-50  transition-all duration-300 ease`}
                 >
                   Service
                 </Link>
@@ -226,14 +240,14 @@ function Nav() {
                   onClick={() => handleScroll("contact")}
                   className={`text-neutral-100 ${
                     activeLinks.contact ? "text-white border-b" : ""
-                  } focus:text-white focus:border-b  hover:text-neutral-50 hover:underline transition-all duration-300 ease`}
+                  } focus:text-white focus:border-b  hover:text-neutral-50  transition-all duration-300 ease`}
                 >
                   Contact
                 </Link>
               </li>
-            </ul>
+            </motion.ul>
           </div>
-        </div>
+        </motion.div>
       )}
     </header>
   );
