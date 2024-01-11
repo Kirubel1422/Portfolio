@@ -78,14 +78,13 @@ function Section1() {
           </ul>
         </div>
         <div className="py-3 md:py-5">
-          <a
-            href="./F_CV.pdf"
-            type="application/pdf"
-            download="CV.pdf"
+          <Link
+            target="_blank"
+            to="https://drive.google.com/file/d/1hAgRDa-7FVyV--5Ry-YUdlFlwLm1Gz9s/view?usp=drive_link"
             className="text-lg text-red-600 p-4 border-red-500 border-2 bg-white hover:bg-red-500 hover:text-white transition-all duration-400 ease-in rounded-md"
           >
-            Download CV
-          </a>
+            OPEN CV
+          </Link>
         </div>
       </motion.div>
     </div>
