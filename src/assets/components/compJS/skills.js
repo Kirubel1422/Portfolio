@@ -18,7 +18,7 @@ export const skills = () => {
     },
     {
       skill: "React JS",
-      level: 90,
+      level: 95,
     },
     {
       skill: "Express JS",
@@ -26,15 +26,27 @@ export const skills = () => {
     },
     {
       skill: "Node JS",
-      level: 90,
+      level: 93,
     },
     {
       skill: "MongoDB",
-      level: 85,
+      level: 90,
     },
     {
       skill: "Python",
-      level: 85,
+      level: 93,
+    },
+    {
+      skill: "GIT",
+      level: 90,
+    },
+    {
+      skill: "Material UI",
+      level: 93,
+    },
+    {
+      skill: "Framer Motion",
+      level: 90,
     },
   ];
 
